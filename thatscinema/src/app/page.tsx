@@ -1,6 +1,17 @@
 import styles from "./page.module.css";
+import axios from 'axios';
 
-export default function Home() {
+export default async function Home() {
+const API_KEY = 'ad0bacf19dd081a4660865acc4bbe47a'
+const query = 'Amelie'
+
+await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${query}`).then(res => {
+  console.log(res.data)
+})
+.catch(error => {
+  console.error(error)
+})
+
   return (
     <div className={styles.page}>
       <main className={styles.main}>
